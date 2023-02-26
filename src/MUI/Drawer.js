@@ -25,6 +25,8 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import TuneIcon from '@mui/icons-material/Tune';
 import AudiotrackIcon from '@mui/icons-material/Audiotrack';
 import GridViewIcon from '@mui/icons-material/GridView';
+import { Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -33,55 +35,70 @@ function ResponsiveDrawer(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
+    setMobileOpen(!mobileOpen)
   };
 
   const drawer = (
     <div>
-      <Toolbar />
+      <Toolbar style={{ justifyContent: "center", }}>
+        <Typography style={{ textAlign: 'center', justifyContent: "center", }} align="center" variant="h4" noWrap component="h1">
+          Studio
+        </Typography>
+      </Toolbar>
+
       <Divider />
       <List>
         {[
           {
             text: "Dashboard",
-            icon: <GridViewIcon />
+            icon: <GridViewIcon />,
+            path: "/"
+            
         },
           {
             text: "Content",
-            icon: <TocIcon />
+            icon: <TocIcon />,
+            path: "content"
         },
           {
             text: "Analytics",
-            icon: <TrendingUpIcon />
+            icon: <TrendingUpIcon />,
+            path: "analytics"
         },
           {
             text: "Comments",
-            icon: <ChatBubbleOutlineIcon />
+            icon: <ChatBubbleOutlineIcon />,
+            path: "comments"
         },
           {
             text: "Subtitles",
-            icon: <ClosedCaptionOffIcon />
+            icon: <ClosedCaptionOffIcon />,
+            path: "subtitles"
         },
           {
             text: "Copyright",
-            icon: <CopyrightIcon />
+            icon: <CopyrightIcon />,
+            path: "copyright"
         },
           {
             text: "Earn",
-            icon: <AttachMoneyIcon />
+            icon: <AttachMoneyIcon />,
+            path: "earn"
         },
           {
             text: "Customization",
-            icon: <TuneIcon />
+            icon: <TuneIcon />,
+            path: "customization"
         },
           {
             text: "Audio library",
-            icon: <AudiotrackIcon />
+            icon: <AudiotrackIcon />,
+            path: "audio"
         }]
         .map((item, index) => {
-          const {text, icon} = item;
+          const {text, icon, path} = item
           return(
-          <ListItem key={text} disablePadding>
+          <ListItem key={text} disablePadding button component={Link} to={path}>
             <ListItemButton>
               <ListItemIcon>
                 {icon}
@@ -98,17 +115,19 @@ function ResponsiveDrawer(props) {
         {[
           {
           text: "Settings",
-          icon: <SettingsIcon />
+          icon: <SettingsIcon />,
+          path: "settings"
         },
         {
           text: "Logout",
-          icon: <LogoutIcon />
+          icon: <LogoutIcon />,
+          path: "logout"
         }
       ]
         .map((item, index) => {
-          const {text, icon} = item;
+          const {text, icon, path} = item
           return(
-          <ListItem key={text} disablePadding>
+          <ListItem key={text} disablePadding button component={Link} to={path}>
             <ListItemButton>
               <ListItemIcon>
                 {icon}
@@ -180,25 +199,14 @@ function ResponsiveDrawer(props) {
           {drawer}
         </Drawer>
       </Box>
+
       <Box
         component="main"
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-          enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-          imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-          Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-          Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-          nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-          leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-          feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-          consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-          sapien faucibus et molestie ac.
-        </Typography>
+
+        <Outlet />
 
       </Box>
     </Box>
