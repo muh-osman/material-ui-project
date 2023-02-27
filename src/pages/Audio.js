@@ -1,14 +1,12 @@
 import Typography from "@mui/material/Typography";
 
-
 const Audio = () => {
   return (
     <>
       <Typography paragraph>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus
-        non enim praesent elementum facilisis leo vel. Risus at ultrices mi
-        tempus imperdiet.
+        Al-Kahf is the 18th chapter of the Quran with 110 verses. Regarding the
+        timing and contextual background of the revelation, it is an earlier
+        "Meccan surah", which means it was revealed in Mecca, instead of Medina.
       </Typography>
 
       <iframe
